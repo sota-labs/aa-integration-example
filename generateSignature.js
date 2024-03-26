@@ -10,10 +10,10 @@ export function generateSignature(method, path, body, secretKey) {
 }
 
 async function main() {
-  const method = ""; // TODO: add method, e.g. "POST"
-  const path = ""; // TODO: add path, e.g. "/api/backend/wallets/generate"
-  const body = {}; // TODO: add body, e.g. {type: 1,userId: "6407283661"}
-  const secretKey = ""; // TODO: add secretKey, e.g. secret-key
+  const method = "POST"; // TODO: add method, e.g. "POST"
+  const path = "/api/backend/wallets/generate"; // TODO: add path, e.g. "/api/backend/wallets/generate"
+  const body = { type: 1, userId: "6767187788" }; // TODO: add body, e.g. {type: 1,userId: "6407283661"}
+  const secretKey = "tinbot-secret-key"; // TODO: add secretKey, e.g. secret-key
 
   const signature = generateSignature(method, path, body, secretKey);
 
