@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Interface } from "ethers";
 import { generateSignature } from "./generateSignature.js";
+import { avabot_router_abi } from "./abis.js";
 
 async function main() {
   axios.defaults.baseURL = "https://api.avabot.sotatek.works";
@@ -10,11 +11,16 @@ async function main() {
   const apiKey = "tinbot-test-api"; // TODO: add apiKey, e.g. api-key
   const secretKey = "tinbot-secret-key"; // TODO: add secretKey, e.g. secret-key
 
-  const abi = ["function transfer(address to, uint amount)"];
-  const iface = new Interface(abi);
-  const encodedData = iface.encodeFunctionData("transfer", [
-    "0x3438b917f12d674F689DB30D8E3DF209A240288a", // avabot router address
-    "1000000000000000",
+  const iface = new Interface(avabot_router_abi);
+  // encode data
+  const encodedData = iface.encodeFunctionData("buy", [
+    "0x0033D92ac0eC241C009Cf8589b8b242E6CC10D25", // token address to buy
+    0, // amountOutMin
+    0, // tip
+    Date.now() + 5 * 60 * 1000, // deadline
+    "", // referral
+    "", // refId
+    2, // dexId, e.g. Uniswap = 1, PANCAKESWAP = 2, TRADER_JOE = 3, RAYDIUM = 4, DYOR = 5, THRUSTER = 6, LAGOM = 7,
   ]);
 
   try {
