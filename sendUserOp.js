@@ -14,7 +14,7 @@ async function main() {
   const iface = new Interface(avabot_router_abi);
   // encode data
   const encodedData = iface.encodeFunctionData("buy", [
-    "0x0033D92ac0eC241C009Cf8589b8b242E6CC10D25", // token address to buy
+    "0x8d008B313C1d6C7fE2982F62d32Da7507cF43551", // token address to buy
     0, // amountOutMin
     0, // tip
     Date.now() + 5 * 60 * 1000, // deadline
@@ -27,7 +27,7 @@ async function main() {
     const bodyData = {
       network: "BSC_TESTNET", // TODO: add network, e.g. "ETH_SEPOLIA", "BSC_TESTNET", "AVALANCHE_TESTNET", "BLAST_SEPOLIA", "SOLANA_DEVNET"
       userId: "6767187788", // TODO: add your userId, e.g. "123456"
-      walletAddress: "0x8224DEE628feEb705Aa79880d8A7E44838F427c4", // TODO: add wallet address created by your bot
+      walletAddress: "0x592A175764b362Ee267F3d231Bd8ad1152F11798", // TODO: add wallet address created by your bot
       to: "0x3438b917f12d674F689DB30D8E3DF209A240288a", // TODO: add to address, here is avabot router address
       data: encodedData,
       value: "1000000000000000", // TODO: add value you want to send in wei, e.g. "1000000000000000"
@@ -44,7 +44,7 @@ async function main() {
 
     console.log("Response:", response.data);
 
-    // successful tx: https://testnet.bscscan.com/tx/0x309de4712308a3e6c89fff08662e22c4c524c9a5c508ebd548b5d21c00830d3a
+    // successful tx: https://jiffyscan.xyz/userOpHash/0xdf6731952aa60b2b7fcfa77b6fc775fbb91c684cefba8dfe17f75cb3dad388eb?network=chapel
   } catch (error) {
     console.error("Error:", error.response.data);
   }
